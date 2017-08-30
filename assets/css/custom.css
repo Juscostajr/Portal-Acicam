@@ -1,0 +1,542 @@
+
+nav .navbar-inverse {
+    background-color: darkblue;
+}
+
+.sub-menu-grupo {
+    position: relative;
+    float: right;
+    border-right: solid 1px #9d9d9d;
+    list-style-type: none;
+    padding-left: 8px;
+    z-index: 110;
+    min-width: 200px;
+}
+
+.sub-menu-grupo h4 {
+    padding-left: 6px;
+}
+
+.sub-menu-grupo ul li {
+    list-style-type: none;
+    display: block;
+}
+
+.sub-menu-grupo ul {
+    padding: 0px;
+    margin: 0px;
+}
+
+.sub-menu-grupo ul li a {
+    display: block;
+    padding: 6px 2px 6px 6px;
+    text-decoration: none;
+    color: #5e5e5e;
+    font-size: 1em;
+
+}
+
+.sub-menu-grupo ul li a:hover {
+    padding-left: 2px;
+    border-left: solid 4px;
+    background-color: #fafafa;
+
+}
+
+.verde {
+    color: #64d18f;
+}
+
+.verde a:hover {
+    color: #17c072;
+
+}
+
+.laranja, .laranja a {
+    color: #ff973c;
+}
+
+.laranja a:hover {
+    color: #ff6e0c;
+}
+
+.rosa, .rosa a {
+    color: #ff6b68;
+}
+
+.rosa a:hover {
+    color: #f54f4c;
+}
+
+.azul, .azul a {
+    color: #68a8ab;
+}
+
+.azul a:hover {
+    color: #477375;
+}
+
+#menu-grupo {
+    width: 45vw;
+}
+
+#bloco {
+    margin: 20px 0;
+}
+
+.noticia {
+    padding: 2% 0;
+}
+
+.noticia img {
+    float: left;
+    width: 23%;
+}
+
+.noticia h4 {
+    background-color: #0f0f0f;
+    color: #ffffff;
+    font-size: smaller;
+    width: 60px;
+    padding: 1%;
+    margin: 0 0 5px 0;
+}
+
+.noticia-descricao {
+    float: right;
+    width: 70%;
+}
+
+.noticia h2, h5 {
+    margin: 0px;
+    padding: 0;
+}
+
+.noticia h5 {
+    font-size: 14px;
+}
+
+.marcador-agenda {
+    font-size: smaller;
+    position: relative;
+    border-top: solid 1px slategrey;
+    margin-top: 4px;
+    padding-top: 2px;
+    color: black;
+}
+
+.square {
+
+    width: 23%;
+    height: 0; /* A mágica está aqui */
+    padding-bottom: 23%; /* ... e está aqui */
+    float: left;
+    position: relative;
+}
+
+/*
+    Veja mais sobre como centralizar o texto no box aqui:
+    http://css-tricks.com/centering-in-the-unknown/
+*/
+.block {
+    position: absolute;
+    text-align: center;
+    background-color: #5CB85C;
+    width: 100%;
+    height: 100%;
+}
+
+.today {
+    background-color: orange;
+    text-decoration: blink;
+}
+
+.block:before {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    margin-right: -0.25em;
+}
+
+.centered {
+    display: inline-block;
+    vertical-align: middle;
+    width: 80%;
+    color: #FFF;
+}
+
+#fala-presidente {
+    width: 40%;
+    float: left;
+    padding-right: 10px;
+}
+
+.espaco {
+    display: block;
+    height: 50px;
+}
+
+#subfooter {
+    background-color: #3c3d73;
+    color: #ffffff;
+    padding: 20px;
+}
+
+.icone {
+    text-align: center;
+
+}
+
+.icone img {
+    float: left;
+}
+
+.icone a {
+    display: block;
+    width: 70px;
+    height: 80px;
+    border: solid 1px #9d9d9d;
+    margin: 0 20px;
+}
+
+.icone a:hover {
+    border-color: #2aabd2;
+}
+
+/*menu serviços*/
+
+.hoverzoom {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+}
+
+.hoverzoom > img {
+    width: 100%;
+    -webkit-transition: all .8s cubic-bezier(.190, 1.000, .220, 1.000);
+    -moz-transition: all .8s cubic-bezier(.190, 1.000, .220, 1.000);
+    -ms-transition: all .8s cubic-bezier(.190, 1.000, .220, 1.000);
+    -o-transition: all .8s cubic-bezier(.190, 1.000, .220, 1.000);
+    transition: all .8s cubic-bezier(.190, 1.000, .220, 1.000);
+}
+
+.hoverzoom:hover > img {
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    -o-transform: scale(1.2);
+    transform: scale(1.2);
+    -webkit-filter: blur(1px);
+    filter: blur(1px);
+}
+
+.hoverzoom .retina {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.15);
+
+    -webkit-transition: all .8s cubic-bezier(.190, 1.000, .220, 1.000);
+    -moz-transition: all .8s cubic-bezier(.190, 1.000, .220, 1.000);
+    -ms-transition: all .8s cubic-bezier(.190, 1.000, .220, 1.000);
+    -o-transition: all .8s cubic-bezier(.190, 1.000, .220, 1.000);
+    transition: all .8s cubic-bezier(.190, 1.000, .220, 1.000);
+}
+
+.hoverzoom:hover .retina {
+    opacity: 1;
+}
+
+.hoverzoom .retina p {
+    margin-top: 80%;
+    color: #fff;
+}
+
+.fb-comments, .fb-comments span, .fb-comments.fb_iframe_widget span iframe {
+    width: 100% !important;
+}
+
+.jssora02l, .jssora02r {
+    display: block;
+    position: absolute;
+    /* size of arrow element */
+    width: 55px;
+    height: 55px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.jssora02l {
+    background-position: -3px -33px;
+}
+
+.jssora02r {
+    background-position: -63px -33px;
+}
+
+.jssora02l:hover {
+    background-position: -123px -33px;
+}
+
+.jssora02r:hover {
+    background-position: -183px -33px;
+}
+
+.jssora02l.jssora02ldn {
+    background-position: -3px -33px;
+}
+
+.jssora02r.jssora02rdn {
+    background-position: -63px -33px;
+}
+
+/* jssor slider thumbnail navigator skin 11 css *//*.jssort11 .p            (normal).jssort11 .p:hover      (normal mouseover).jssort11 .pav          (active).jssort11 .pav:hover    (active mouseover).jssort11 .pdn          (mousedown)*/
+
+.jssort11 .p {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 445px;
+    height: 75px;
+    background-color: #adadad;
+}
+
+.jssort11 .tp {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.jssort11 .t, .jssort11 .pav:hover .t {
+    position: absolute;
+    display: block;
+    width: 380px;
+    height: 75px;
+    text-align: center;
+    line-height: 32px;
+    text-align: left;
+    color: #FFFFFF;
+    font-size: 2em;
+    font-weight: 700;
+    padding: 20px 0 0 40px;
+}
+
+.jssort11 .pav .t, .jssort11 .p:hover .t {
+    color: #fff;
+}
+
+.jssort11 .t {
+    transition: color 1s;
+    -moz-transition: color 1s;
+    -webkit-transition: color 1s;
+    -o-transition: color 1s;
+}
+
+.jssort11 .p:hover .t, .jssort11 .pav:hover .t {
+    transition: none;
+    -moz-transition: none;
+    -webkit-transition: none;
+    -o-transition: none;
+}
+
+.jssort11 .pav, .jssort11 .p.pdn {
+    background-color: rgb(122, 122, 122);
+}
+
+#menu1:hover, #menu2:hover, #menu3:hover, #menu4:hover, #menu5:hover, #menu6:hover {
+    background-image: url("../../img/seta.png");
+    background-position: left;
+    background-repeat: no-repeat;
+
+}
+
+#menu1 {
+    background-color: #17c072;
+}
+
+#menu2 {
+    background-color: #83b5a4;
+}
+
+#menu3 {
+    background-color: #477375;
+}
+
+#menu4 {
+    background-color: #f54f4c;
+}
+
+.amarelo {
+    background-color: #ffaf45;
+}
+
+#menu6 {
+    background-color: #e09200;
+}
+
+.carousel-caption {
+
+    background: rgba(0, 0, 0, 0);
+    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 85%, rgba(0, 0, 0, 1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(85%, rgba(0, 0, 0, 1)), color-stop(100%, rgba(0, 0, 0, 1)));
+    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 85%, rgba(0, 0, 0, 1) 100%);
+    background: -o-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 85%, rgba(0, 0, 0, 1) 100%);
+    background: -ms-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 85%, rgba(0, 0, 0, 1) 100%);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 85%, rgba(0, 0, 0, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000', endColorstr='#000000', GradientType=0);
+    text-align: left;
+}
+
+.carousel-caption h1 {
+    font-family: 'Crete Round', serif;
+    text-shadow: 3px 3px 3px #000000;
+}
+
+@media (max-width: 767px) {
+    .carousel-caption h1 {
+        font-size: 6.5vw;
+        padding-bottom: 10px;
+    }
+
+    .carousel-caption p {
+        display: none;
+    }
+
+    .hoverzoom {
+        width: 32.45%;
+        height: 32.45%;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+
+    .hoverzoom {
+        width: 116px;
+        height: 116px;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    .hoverzoom {
+        width: 153px;
+        height: 153px;
+    }
+
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+    .carousel-caption h1 {
+        font-size: 3em;
+    }
+
+    .carousel-caption p {
+        font-size: 1.4em;
+    }
+
+}
+
+@media (min-width: 1200px) {
+    .carousel-caption h1 {
+        font-size: 3.5em;
+    }
+
+    .carousel-caption p {
+        font-size: 1.7em;
+    }
+
+    .hoverzoom {
+        width: 125px;
+        height: 123px;
+    }
+}
+
+.noticia-grande {
+    margin-bottom: 6px;
+}
+
+.notop {
+    margin-top: 0;
+}
+
+.height-md {
+    min-height: 300px;
+}
+
+.no-link {
+    text-decoration: none;
+}
+
+
+#painel-cursos .carousel {
+    margin-bottom: 0;
+    padding: 0 40px 30px 40px;
+}
+/* The controlsy */
+#painel-cursos .carousel-control {
+
+    height: 40px;
+	width: 40px;
+    background: none repeat scroll 0 0 #222222;
+    border: 4px solid #FFFFFF;
+    border-radius: 23px 23px 23px 23px;
+    margin-top: 90px;
+}
+
+/* The indicators */
+#painel-cursos .carousel-indicators {
+
+	top: auto;
+	bottom: -10px;
+	margin-right: -19px;
+}
+/* The colour of the indicators */
+#painel-cursos .carousel-indicators li {
+	background: #cecece;
+}
+#painel-cursos .carousel-indicators .active {
+background: #428bca;
+}
+
+#sliderlouder {
+    width: 100%;
+    text-align: center;    
+}
+
+.spinner {
+  width: 60px;
+  height: 60px;
+  margin: 20% auto;
+  animation: rotate 1.4s infinite ease-in-out, background 1.4s infinite ease-in-out alternate;
+}
+
+@keyframes rotate {
+  0% {
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+  }
+  50% {
+    transform: perspective(120px) rotateX(-180deg) rotateY(0deg);
+  }
+  100% {
+    transform: perspective(120px) rotateX(-180deg) rotateY(-180deg);
+  }
+}
+@keyframes background {
+  0% {
+  background-color: #27ae60;
+  }
+  50% {
+    background-color: #9b59b6;
+  }
+  100% {
+    background-color: #c0392b;
+  }
+}
+

@@ -1,0 +1,32 @@
+{"itens":[
+  {
+    "titulo":"Consulta SPC",
+    "link":"https:\/\/servicos.spc.org.br\/spc\/controleacesso\/autenticacao\/entry.action",
+    "imagem":"\/img\/buttons\/spc.gif"
+  },
+  {
+    "titulo":"Agendar Protesto",
+    "link":"https:\/\/www.phdrisk.com\/acicam",
+    "imagem":"\/img\/buttons\/protesto.gif"
+  },
+  {
+    "titulo":"Nota Fiscal",
+    "link":"http:\/\/varitus.com.br\/faciap\/",
+    "imagem":"\/img\/buttons\/nfe.gif"
+  },
+  {
+    "titulo":"Certificado Digital",
+    "link":"http:\/\/www.faciap.org.br\/certificadodigital\/pontos\/?id=43",
+    "imagem":"\/img\/buttons\/certificado.gif"
+  },
+  {
+    "titulo":"Atualizar Boleto",
+    "link":".\/boleto",
+    "imagem":"\/img\/buttons\/boleto.gif"
+  },
+  {
+    "titulo":"Convênios",
+    "link":"\/saude\/",
+    "imagem":"\/img\/buttons\/mais-saude.gif"
+  }
+]}

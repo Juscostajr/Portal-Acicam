@@ -1,0 +1,101 @@
+/* jssor slider arrow navigator skin 02 css */
+/*
+.jssora02l                  (normal)
+.jssora02r                  (normal)
+.jssora02l:hover            (normal mouseover)
+.jssora02r:hover            (normal mouseover)
+.jssora02l.jssora02ldn      (mousedown)
+.jssora02r.jssora02rdn      (mousedown)
+*/
+.jssora02l, .jssora02r {
+    display: block;
+    position: absolute;
+    /* size of arrow element */
+    width: 55px;
+    height: 55px;
+    cursor: pointer;
+    background: url('../img/a02.png') no-repeat;
+    overflow: hidden;
+}
+.jssora02l { background-position: -3px -33px; }
+.jssora02r { background-position: -63px -33px; }
+.jssora02l:hover { background-position: -123px -33px; }
+.jssora02r:hover { background-position: -183px -33px; }
+.jssora02l.jssora02ldn { background-position: -3px -33px; }
+.jssora02r.jssora02rdn { background-position: -63px -33px; }
+
+/* jssor slider thumbnail navigator skin 11 css *//*.jssort11 .p            (normal).jssort11 .p:hover      (normal mouseover).jssort11 .pav          (active).jssort11 .pav:hover    (active mouseover).jssort11 .pdn          (mousedown)*/
+
+.jssort11 .p {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 445px;
+    height: 75px;
+    background-color: #adadad;
+}
+.jssort11 .tp {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+.jssort11 .t, .jssort11 .pav:hover .t {
+    position: absolute;
+    display: block;
+    width: 380px;
+    height: 75px;
+    text-align: center;
+    line-height: 32px;
+    text-align: left;
+    color: #FFFFFF;
+    font-size: 2em;
+    font-weight: 700;
+    padding: 20px 0 0 40px;
+}
+.jssort11 .pav .t, .jssort11 .p:hover .t {
+    color: #fff;
+}
+.jssort11 .t {
+    transition: color 1s;
+    -moz-transition: color 1s;
+    -webkit-transition: color 1s;
+    -o-transition: color 1s;
+}
+.jssort11 .p:hover .t, .jssort11 .pav:hover .t {
+    transition: none;
+    -moz-transition: none;
+    -webkit-transition: none;
+    -o-transition: none;
+}
+
+.jssort11 .pav, .jssort11 .p.pdn {
+background-color: rgb(122, 122, 122);
+}
+#menu1:hover,#menu2:hover,#menu3:hover,#menu4:hover,#menu5:hover,#menu6:hover {
+    background-image: url("../img/seta.png");
+    background-position: left;
+    background-repeat: no-repeat;
+
+}
+
+#menu1  {
+    background-color: #17c072;
+}
+#menu2 {
+    background-color: #83b5a4;
+}
+#menu3 {
+    background-color: #477375;
+}
+#menu4 {
+    background-color: #f54f4c;
+}
+#menu5 {
+    background-color: #f9c728;
+}
+#menu6 {
+    background-color: #e09200;
+}
