@@ -24,8 +24,9 @@ include_once 'controle/grv_topico.php';
                 Imagem
                 <form id="form-data" enctype="multipart/form-data">
                     <div class='form-group'>
-                        <input id="file" type="file" name="file" placeholder="tamanho ideal (263px X 365px)" class="file form-control" data-show-preview="true">
-                    </div>              
+                        <input id="file" type="file" name="file" placeholder="tamanho ideal (263px X 365px)"
+                               class="file form-control" data-show-preview="true">
+                    </div>
                 </form>
 
             </div>
@@ -37,8 +38,8 @@ include_once 'controle/grv_topico.php';
 </div>
 <div class="table-responsive">
     <form method="post" name="topicos">
-    <table class="table table-striped table-hover table-sortable">
-        <thead>
+        <table class="table table-striped table-hover table-sortable">
+            <thead>
             <tr>
                 <th>Cor</th>
                 <th>Título</th>
@@ -46,18 +47,19 @@ include_once 'controle/grv_topico.php';
                 <th>Imagem</th>
                 <th>Ação</th>
             </tr>
-        </thead>   
-        <tbody>
+            </thead>
+            <tbody id="table">
             <?php foreach ($slider->read('../app/data/slider.json') as $key => $value): ?>
 
                 <tr>
                     <td><input class="form-control" type="color" name="cor[]" value="<?= $value->cor ?>"></td>
-                    <td><input class="form-control select" type="text" name="titulo[]" value="<?php echo $value->titulo ?>">
+                    <td><input class="form-control select" type="text" name="titulo[]"
+                               value="<?php echo $value->titulo ?>">
                     </td>
                     <td><input class="form-control select" type="text" name="link[]" value="<?php echo $value->link ?>">
                     </td>
                     <td class="text-center">
-                        <a class="img-button" data-toggle="modal" data-target="#img-manager">
+                        <a class="img-button">
                             <img src="<?= $value->imagem ?>" height="150" id="img-<?= $key ?>">
                         </a>
                         <input type="hidden" name="imagem[]" id="img-<?= $key ?>-input" value="<?= $value->imagem ?>">
@@ -68,13 +70,34 @@ include_once 'controle/grv_topico.php';
                     </td>
                 </tr>
             <?php endforeach ?>
-        </tbody>
-        
-    </table>
-</form>
+            </tbody>
+
+        </table>
+    </form>
     <button class="btn btn-primary btn-block" id="add"><span class="glyphicon glyphicon-plus"></span> Adicionar</button>
-    <button class="btn btn-success btn-block" onclick="document.topicos.submit()"><span class="glyphicon glyphicon-save"></span> Salvar</button>
+    <button class="btn btn-success btn-block" onclick="document.topicos.submit()"><span
+            class="glyphicon glyphicon-save"></span> Salvar
+    </button>
 </div>
+<table style="display: none; visibility: hidden;" id="template">
+    <tr>
+        <td><input class="form-control" type="color" name="cor[]" value="<?= $value->cor ?>"></td>
+        <td><input class="form-control select" type="text" name="titulo[]">
+        </td>
+        <td><input class="form-control select" type="text" name="link[]">
+        </td>
+        <td class="text-center">
+            <a class="img-button">
+                <img src="/img/slider/default.jpg" height="150">
+            </a>
+            <input type="hidden" name="imagem[]" value="/img/slider/default.jpg">
+        </td>
+        <td>
+            <button type='button' class='btn btn-danger btn-xs remove form-control'><span
+                    class='glyphicon glyphicon-trash'></span></button>
+        </td>
+    </tr>
+</table>
 <script type="text/javascript">
     var imgActive;
     var elements = 90;
@@ -86,17 +109,13 @@ include_once 'controle/grv_topico.php';
         allowedFileExtensions: ["jpg", "png", "gif"]
     });
 
-    $('#file').on('fileuploaded', function (event,data) {   
-        var img = '#' + imgActive;
-        var imgInput = img + '-input'; 
-        $(img).attr('src','/img/slider/' + data.filenames[0]);
-        $(imgInput).attr('value','/img/slider/' + data.filenames[0]);
+    $('#file').on('fileuploaded', function (event, data) {
+        imgActive.find('img').attr('src', '/img/slider/' + data.filenames[0]);
+        imgActive.next().attr('value', '/img/slider/' + data.filenames[0]);
         $('#img-manager').modal('toggle');
+
     });
 
-    $('.img-button').click(function (){
-        imgActive = $(this).find('img').attr('id');
-    });
     $(document).on('focus', '.select', function () {
         this.select();
     });
@@ -106,7 +125,12 @@ include_once 'controle/grv_topico.php';
     });
 
     $(document).on('click', '.img-button', function () {
-        $('#filename').val($(this).find('img').attr('src'));
+        $('#img-manager').modal('toggle');
+        imgActive = $(this);
+    });
+
+    $("#add").click(function () {
+        $('#template').find('tr').clone().appendTo($('#table'));
     });
 
     $(document).ready(function () {
@@ -129,27 +153,7 @@ include_once 'controle/grv_topico.php';
 
         $(".table-sortable thead").disableSelection();
 
-
     });
-
-    $("#add").click(function () {
-        elements++;
-        var line = $(".table-sortable tbody").first();
-        line.append("<tr>" +
-                "<td>" +
-                "<input class='form-control' type='color' name='cor[]'>" +
-                "</td>" +
-                "<td><input class='form-control select' type='text' name='titulo[]' required> </td>" +
-                "<td><input class='form-control select' type='text' name='link[]' required> </td>" +
-                "<td class='text-center'><a class='img-button' data-toggle='modal' data-target='#img-manager'><img src='/img/slider/default.jpg' height='150' id=img-"+elements+"></a><input type='hidden' name='imagem[]' value='/img/slider/default.jpg'></td>" +
-                "<td> <button type='button' class='btn btn-danger btn-xs remove form-control'><span class='glyphicon glyphicon-trash'></span></button> </td> </tr>");    
-    });
-
-
-
-
-
-
 
 
 </script>
