@@ -18,16 +18,32 @@ if (isset($_POST['submit'])) {
 }
 ?>
 
-<img src='../img/fotos/<?= $noticia->Img_Postagem ?>.jpg'>
 <form method='post' action='' enctype='multipart/form-data'>
     <div class='form-group'>
+        <label>Titulo</label>
         <input class='form-control' type='text' name='titulo' value='<?= $noticia->DS_Titulo ?>'>
     </div>
-    <textarea name='conteudo' id='hospedeira' class='form-control' rows='15'><?= $noticia->Conteudo ?></textarea>
+    <div class="form-group">
+        <label>Imagem</label>
+        <div class="alert alert-info">
+            <span class="glyphicon glyphicon-info-sign"></span> Clique na imagem para substituí-la.
+        </div>
+        <div class="panel panel-default" id="panel-foto">
+            <div class="panel-body text-center">
+                <label>
+                    <img src="../img/fotos/<?= $noticia->Img_Postagem ?>.jpg" id="fotoPreview"
+                         style="max-width: 400px; max-height: 400px">
+                    <input type="file" id="foto" name="foto" style="display: none;" required>
+                </label>
+            </div>
+        </div>
+    </div>
+    <div id="summernote"><?= $noticia->Conteudo ?></div>
+    <textarea name='conteudo' id='hospedeira' hidden></textarea>
     <input type='submit' name='submit' class='btn btn-success' id='submit-btn'>
 </form>
 
-
+<script type="text/javascript" src="js/noticia.js"></script>
 <script>
     $("#file").fileinput({
         language: "pt-BR",
@@ -39,6 +55,24 @@ if (isset($_POST['submit'])) {
             $("#editor").html()
         );
     });
+    $("#foto").change(function () {
+        readURL(this);
+    });
+    function readURL(input) {
+        if (!input.files && !input.files[0]) {
+            return
+        }
+        var reader = new FileReader();
+        reader.onload = (function (file) {
+            var image = new Image();
+            image.src = file.target.result;
+
+            image.onload = function () {
+                $('#fotoPreview').attr('src', this.src);
+            };
+        });
+        reader.readAsDataURL(input.files[0]);
+    }
 
 </script>
 
