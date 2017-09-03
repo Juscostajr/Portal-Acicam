@@ -1,1 +1,6 @@
-/.idea
+.idea
+app/config
+app/model/ConexaoMysql.php
+admin/.backup
+admin/.htpasswd
+admin/.htaccess
