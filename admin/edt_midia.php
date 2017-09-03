@@ -64,7 +64,7 @@ $files = array_diff(scandir($patch), array('.', '..'));
                     </form>
                 </td>
                 <td>
-                    <button type='button' class='btn btn-danger' onClick='this.parentNode.submit();'><span
+                    <button type='button' class='btn btn-danger delete'><span
                             class='glyphicon glyphicon-trash'></span></button>
                 </td>
             </tr>
@@ -89,6 +89,13 @@ $files = array_diff(scandir($patch), array('.', '..'));
 
     clipboard.on('error', function (e) {
         console.log(e);
+    });
+
+    $(document).on("click", ".delete", function(e) {
+        bootbox.confirm("Tem certeza que deseja excluir este item?", function(confirm) {
+            if(confirm){
+            }
+        });
     });
 
     $("#file").fileinput({

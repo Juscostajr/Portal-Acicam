@@ -33,11 +33,11 @@ $comercio = new ComercioModel();
                 <td data-label="hora-inicio" data-type="time"><?php echo $value->HR_Inicio ?></td>
                 <td data-label="hora-termino" data-type="time"><?= $value->HR_Termino ?></td>
                 <td data-label="action">
-                    <button type='button' class='btn btn-warning btn-xs' id="edit"><span
-                            class='glyphicon glyphicon-edit'></span></button>
                     <form method='post'>
                         <input type='hidden' name='id' value='<?php echo $value->DT_Comercio ?>'>
-                        <button type='button' class='btn btn-danger btn-xs' onClick='this.parentNode.submit();'><span
+                        <button type='button' class='btn btn-warning btn-xs' id="edit"><span
+                                class='glyphicon glyphicon-edit'></span></button>
+                        <button type='button' class='btn btn-danger btn-xs delete'><span
                                 class='glyphicon glyphicon-trash'></span></button>
                     </form>
                 </td>
@@ -56,4 +56,14 @@ $comercio = new ComercioModel();
             }
         });
     });
+
+    $(document).on("click", ".delete", function (e) {
+        const form = $(this).parent();
+        bootbox.confirm("Tem certeza que deseja excluir este item?", function (confirm) {
+            if (confirm) {
+                form.submit();
+            }
+        });
+    });
+
 </script>

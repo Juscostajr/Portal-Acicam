@@ -10,6 +10,7 @@
     <script type="text/javascript" src="js/jcrop.min.js"></script>
     <link href="css/jcrop.min.css" type="text/css" rel="stylesheet">
     <script type="text/javascript" src="/assets/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/bootbox.min.js"></script>
     <link href="../assets/css/dashboard.css" rel="stylesheet">
     <link href="css/fileinput.css" rel="stylesheet">
     <script src="js/fileinput.min.js"></script>
@@ -32,6 +33,7 @@
             document.getElementById("nid").value = valorID;
             novo.setAttribute("id", "focus");
         }
+        bootbox.setDefaults({locale: 'br'});
     </script>
 </head>
 

@@ -34,7 +34,7 @@ $menu = new Menu();
                         <input type='hidden' name='id' value='<?= $avo->Pagina_DS_URL ?>'>
                         <button type='button' class='btn btn-warning btn-xs edit'><span
                                 class='glyphicon glyphicon-edit'></span></button>
-                        <button type='button' class='btn btn-danger btn-xs' onClick='this.parentNode.submit();'><span
+                        <button type='button' class='btn btn-danger btn-xs delete'><span
                                 class='glyphicon glyphicon-trash'></span></button>
                     </form>
                 </td>
@@ -49,7 +49,7 @@ $menu = new Menu();
                             <input type='hidden' name='id' value='<?= $pai->Pagina_DS_URL ?>'>
                             <button type='button' class='btn btn-warning btn-xs edit'><span
                                     class='glyphicon glyphicon-edit'></span></button>
-                            <button type='button' class='btn btn-danger btn-xs' onClick='this.parentNode.submit();'>
+                            <button type='button' class='btn btn-danger btn-xs delete'>
                                 <span class='glyphicon glyphicon-trash'></span></button>
                         </form>
                     </td>
@@ -64,7 +64,7 @@ $menu = new Menu();
                                 <input type='hidden' name='id' value='<?= $filho->Pagina_DS_URL ?>'>
                                 <button type='button' class='btn btn-warning btn-xs edit'><span
                                         class='glyphicon glyphicon-edit'></span></button>
-                                <button type='button' class='btn btn-danger btn-xs' onClick='this.parentNode.submit();'>
+                                <button type='button' class='btn btn-danger btn-xs delete'>
                                     <span class='glyphicon glyphicon-trash'></span></button>
                             </form>
                         </td>
@@ -74,7 +74,8 @@ $menu = new Menu();
         <?php endforeach ?>
         </tbody>
     </table>
-    <button class="btn btn-primary form-control" id="add"><span class="glyphicon glyphicon-plus"></span> Adicionar</button>
+    <button class="btn btn-primary form-control" id="add"><span class="glyphicon glyphicon-plus"></span> Adicionar
+    </button>
     <table id="template" style="display: none; visibility: hidden">
         <tr>
             <td data-label="titulo" data-type="text">
@@ -84,7 +85,9 @@ $menu = new Menu();
             <td data-label="url" data-type="text">
                 <input type="text" class="form-control" name="url" placeholder="Url"></td>
             <td data-label="action">
-                <button class="btn btn-xs btn-success confirm" type="button"><span class="glyphicon glyphicon-check"></span> Salvar</button>
+                <button class="btn btn-xs btn-success confirm" type="button"><span
+                        class="glyphicon glyphicon-check"></span> Salvar
+                </button>
             </td>
         </tr>
     </table>
@@ -104,4 +107,14 @@ $menu = new Menu();
                 }
             });
         });
+
+        $(document).on("click", ".delete", function (e) {
+            const form = $(this).parent();
+            bootbox.confirm("Tem certeza que deseja excluir este item?", function (confirm) {
+                if (confirm) {
+                    form.submit();
+                }
+            });
+        });
+
     </script>

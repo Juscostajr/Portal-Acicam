@@ -35,10 +35,10 @@ $pagina = new PaginaModel();
                 <td><?= limitarTexto($value->Conteudo,150) ?></td>
                 <td><?php echo $value->Keywords?></td>
                 <td>
-                    <button type='button' class='btn btn-warning btn-xs' onClick='window.location = "./?pg=pagina&aba=alterar&id=<?= $value->DS_URL ?>"'><span class='glyphicon glyphicon-edit'></span></button>
                     <form method='post'>
                         <input type='hidden' name='id' value='<?php echo $value->DS_URL?>'>
-                        <button type='button' class='btn btn-danger btn-xs' onClick='this.parentNode.submit();'><span class='glyphicon glyphicon-trash'></span></button>
+                        <button type='button' class='btn btn-warning btn-xs' onClick='window.location = "./?pg=pagina&aba=alterar&id=<?= $value->DS_URL ?>"'><span class='glyphicon glyphicon-edit'></span></button>
+                        <button type='button' class='btn btn-danger btn-xs delete'><span class='glyphicon glyphicon-trash'></span></button>
                     </form>
                 </td>
             </tr>
@@ -47,3 +47,13 @@ $pagina = new PaginaModel();
     </table>
     <?php echo $pagger->getPagger() ?>
 </div>
+<script type="text/javascript">
+    $(document).on("click", ".delete", function(e) {
+        const form = $(this).parent();
+        bootbox.confirm("Tem certeza que deseja excluir este item?", function(confirm) {
+            if(confirm) {
+                form.submit();
+            }
+        });
+    });
+</script>

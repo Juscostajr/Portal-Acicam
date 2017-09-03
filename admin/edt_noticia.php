@@ -32,7 +32,7 @@ $min = $max-10;
                     <button type='button' class='btn btn-warning btn-xs' onClick='window.location = "./?pg=noticia&aba=alterar&id=<?= $value->ID_Postagem ?>"'><span class='glyphicon glyphicon-edit'></span></button>
                     <form method='post'>
                         <input type='hidden' name='id' value='<?php echo $value->ID_Postagem ?>'>
-                        <button type='button' class='btn btn-danger btn-xs' onClick='this.parentNode.submit();'><span class='glyphicon glyphicon-trash'></span></button>
+                        <button type='button' class='btn btn-danger btn-xs delete'><span class='glyphicon glyphicon-trash'></span></button>
                     </form>
                 </td>
             </tr>
@@ -47,3 +47,13 @@ $min = $max-10;
         <?php endfor ?>
     </ul>
 </div>
+<script type="text/javascript">
+    $(document).on("click", ".delete", function(e) {
+        const form = $(this).parent();
+        bootbox.confirm("Tem certeza que deseja excluir este item?", function(confirm) {
+            if(confirm) {
+                form.submit();
+            }
+        });
+    });
+</script>
