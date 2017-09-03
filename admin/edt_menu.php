@@ -23,7 +23,7 @@ $menu = new Menu();
             <th>Ação</th>
         </tr>
         </thead>
-        <tbody>
+        <tbody id="table">
         <?php foreach ($menu->findMainMenu() as $avo): ?>
             <tr class="danger">
                 <td data-label="titulo" data-type="text"><?= $avo->DS_Titulo ?></td>
@@ -32,8 +32,10 @@ $menu = new Menu();
                 <td data-label="action">
                     <form method='post'>
                         <input type='hidden' name='id' value='<?= $avo->Pagina_DS_URL ?>'>
-                        <button type='button' class='btn btn-warning btn-xs edit'><span class='glyphicon glyphicon-edit'></span></button>
-                        <button type='button' class='btn btn-danger btn-xs' onClick='this.parentNode.submit();'><span class='glyphicon glyphicon-trash'></span></button>
+                        <button type='button' class='btn btn-warning btn-xs edit'><span
+                                class='glyphicon glyphicon-edit'></span></button>
+                        <button type='button' class='btn btn-danger btn-xs' onClick='this.parentNode.submit();'><span
+                                class='glyphicon glyphicon-trash'></span></button>
                     </form>
                 </td>
             </tr>
@@ -45,8 +47,10 @@ $menu = new Menu();
                     <td data-label="action">
                         <form method='post'>
                             <input type='hidden' name='id' value='<?= $pai->Pagina_DS_URL ?>'>
-                            <button type='button' class='btn btn-warning btn-xs edit'><span class='glyphicon glyphicon-edit'></span></button>
-                            <button type='button' class='btn btn-danger btn-xs' onClick='this.parentNode.submit();'><span class='glyphicon glyphicon-trash'></span></button>
+                            <button type='button' class='btn btn-warning btn-xs edit'><span
+                                    class='glyphicon glyphicon-edit'></span></button>
+                            <button type='button' class='btn btn-danger btn-xs' onClick='this.parentNode.submit();'>
+                                <span class='glyphicon glyphicon-trash'></span></button>
                         </form>
                     </td>
                 </tr>
@@ -58,8 +62,10 @@ $menu = new Menu();
                         <td data-label="action">
                             <form method='post'>
                                 <input type='hidden' name='id' value='<?= $filho->Pagina_DS_URL ?>'>
-                                <button type='button' class='btn btn-warning btn-xs edit'><span class='glyphicon glyphicon-edit'></span></button>
-                                <button type='button' class='btn btn-danger btn-xs' onClick='this.parentNode.submit();'><span class='glyphicon glyphicon-trash'></span></button>
+                                <button type='button' class='btn btn-warning btn-xs edit'><span
+                                        class='glyphicon glyphicon-edit'></span></button>
+                                <button type='button' class='btn btn-danger btn-xs' onClick='this.parentNode.submit();'>
+                                    <span class='glyphicon glyphicon-trash'></span></button>
                             </form>
                         </td>
                     </tr>
@@ -68,14 +74,34 @@ $menu = new Menu();
         <?php endforeach ?>
         </tbody>
     </table>
-<script type="text/javascript">
-    $('.edit').click(function () {
-        $(this).closest('tr').find('td').each(function () {
-            if ($(this).attr('data-label') != 'action') {
-                $(this).html('<input type="' + $(this).attr('data-type') + '" class="form-control" value="' + $(this).html() + '">');
-            } else {
-                $(this).html('<button class="btn btn-xs btn-success confirm" type="button"><span class="glyphicon glyphicon-check"></span> Salvar</button>');
-            }
+    <button class="btn btn-primary form-control" id="add"><span class="glyphicon glyphicon-plus"></span> Adicionar</button>
+    <table id="template" style="display: none; visibility: hidden">
+        <tr>
+            <td data-label="titulo" data-type="text">
+                <input type="text" class="form-control" name="titulo" placeholder="Título"></td>
+            <td data-label="titulo-pai" data-type="text">
+                <input type="text" class="form-control" name="pai" placeholder="Subtítulo de:"></td>
+            <td data-label="url" data-type="text">
+                <input type="text" class="form-control" name="url" placeholder="Url"></td>
+            <td data-label="action">
+                <button class="btn btn-xs btn-success confirm" type="button"><span class="glyphicon glyphicon-check"></span> Salvar</button>
+            </td>
+        </tr>
+    </table>
+
+    <script type="text/javascript">
+
+        $('#add').click(function () {
+            $('#template').find('tr').clone().appendTo($('#table'));
         });
-    });
-</script>
+
+        $('.edit').click(function () {
+            $(this).closest('tr').find('td').each(function () {
+                if ($(this).attr('data-label') != 'action') {
+                    $(this).html('<input type="' + $(this).attr('data-type') + '" class="form-control" value="' + $(this).html() + '">');
+                } else {
+                    $(this).html('<button class="btn btn-xs btn-success confirm" type="button"><span class="glyphicon glyphicon-check"></span> Salvar</button>');
+                }
+            });
+        });
+    </script>
