@@ -1,6 +1,6 @@
 .idea
 app/config
-app/model/ConexaoMysql.php
+app/model/ConfigMysql.php
 admin/.backup
 admin/.htpasswd
 admin/.htaccess
