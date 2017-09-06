@@ -91,7 +91,7 @@ $pg = isset($_GET['aba']) ? $_GET['aba'] : null; ?>
         </div>
         <div class="col-md-2">
             <label>Preview</label>
-            <button type="button" class="btn btn-warning form-control preview">Preview</button>
+            <button type="button" class="btn btn-default form-control preview">Preview</button>
         </div>
         <div class="col-md-1">
             <label>Remover</label>
@@ -124,7 +124,7 @@ $pg = isset($_GET['aba']) ? $_GET['aba'] : null; ?>
     });
 
     $('#caixa-opcoes').on('keyup','.texto',function () {
-        $('.preview').html($(this).val());
+        $(this).parent().parent().find('button').first().html($(this).val());
     });
 
     $('#ativar').change(function () {
