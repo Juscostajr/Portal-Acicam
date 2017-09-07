@@ -26,8 +26,8 @@ $agenda = new Agenda();
                 <td><?php echo $value->IN_Local?></td>
                 <td>
                     <form method='post'>
-                        <input type='hidden' name='id' value='<?php echo $value->ID_Agendamento?>'>
-                        <button type='button' class='btn btn-warning btn-xs' onClick='window.location = "./?pg=calendario&aba=alterar&id="'><span class='glyphicon glyphicon-edit'></span></button>
+                        <input type='hidden' name='id' value='<?= $value->ID_Agendamento?>'>
+                        <button type='button' class='btn btn-warning btn-xs' onClick='window.location = "./?pg=calendario&aba=alterar&id=<?= $value->ID_Agendamento?>"'><span class='glyphicon glyphicon-edit'></span></button>
                         <button type='button' class='btn btn-danger btn-xs delete'><span class='glyphicon glyphicon-trash'></span></button>
                     </form>
                 </td>
