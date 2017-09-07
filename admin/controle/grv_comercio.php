@@ -19,7 +19,11 @@ if(isset($_POST['data']['data'])) {
     $comercio->setTermino($_POST['data']['termino']);
 
     try {
-        $comercio->insert();
+        if(isset($_POST['data']['id'])){
+            $comercio->update($_POST['data']['id']);
+        } else {
+            $comercio->insert();
+        }
         http_response_code(200);
         echo json_encode($comercio);
     } catch (Exception $e) {

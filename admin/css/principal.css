@@ -295,3 +295,7 @@ input:checked + .slider:before {
 body{
 	overflow-y: scroll;
 }
+.template {
+	display: none;
+	visibility: hidden
+}
