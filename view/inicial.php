@@ -1,32 +1,31 @@
-<!-- popup 
+<?php if ($popup->getActive()): ?>
+    <div id="popup" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header modal-header-gray">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"><?= $popup->getTitle() ?></h4>
+                </div>
+                <div class="modal-body">
+                    <img src="/img/popups/<?= $popup->getImage() ?>" width="100%">
+                </div>
+                <div class="modal-footer">
+                    <?php foreach ($popup->getButtons() as $button): ?>
+                        <a href="<?= $button->link ?>">
+                            <button type="button" class="btn <?= $button->color ?>"><?= $button->text ?></button>
+                        </a>
+                    <?php endforeach ?>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+                </div>
+            </div>
 
-<div id="popup" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-
-        <div class="modal-content">
-            <div class="modal-header modal-header-gray">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <img src="/img/popups/TEATRO.jpeg" width="100%">
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
-            </div>
-        </div>
-
-    </div>
-</div> 
--->
-<!-- <section id="bloco">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                
-            </div>
         </div>
     </div>
-</section> -->
+    <script type="text/javascript">
+        $('#popup').modal('show');
+    </script>
+<?php endif ?>
+
 <!-- Sessão Destaques -->
 <section>
     <div class="container">

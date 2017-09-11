@@ -8,7 +8,7 @@
 require_once "controle/rem_topico.php";
 require_once "../app/model/MenuServOnline.php";
 $slider = new MenuServOnline();
-include_once 'controle/grv_topico.php';
+include_once 'controle/grv_servOnline.php';
 ?>
 <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
 <div class="modal fade" id="img-manager" role="dialog">
@@ -42,7 +42,7 @@ include_once 'controle/grv_topico.php';
     <span class="glyphicon glyphicon-info-sign"></span> Você poderá arrastar os itens para trocá-los de posição.
 </div>
 <div class="table-responsive">
-    <form method="post" name="topicos">
+    <form method="post" name="serv_online">
     <table class="table table-striped table-hover table-sortable">
         <thead>
             <tr>
@@ -61,7 +61,7 @@ include_once 'controle/grv_topico.php';
                     <td><input class="form-control select" type="text" name="link[]" value="<?php echo $value->link ?>">
                     </td>
                     <td class="text-center">
-                        <a class="img-button" data-toggle="modal" data-target="#img-manager">
+                        <a class="img-button">
                             <img src="<?= $value->imagem ?>" height="150" id="img-<?= $key ?>">
                         </a>
                         <input type="hidden" name="imagem[]" id="img-<?= $key ?>-input" value="<?= $value->imagem ?>">
@@ -76,7 +76,7 @@ include_once 'controle/grv_topico.php';
         
     </table>
 </form>
-    <button class="btn btn-success btn-block" onclick="document.topicos.submit()"><span class="glyphicon glyphicon-save"></span> Salvar</button>
+    <button class="btn btn-success btn-block" onclick="document.serv_online.submit()"><span class="glyphicon glyphicon-save"></span> Salvar</button>
 </div>
 <script type="text/javascript">
     var imgActive;
@@ -93,17 +93,18 @@ include_once 'controle/grv_topico.php';
         maxImageWidth: 125
     });
 
-    $('#file').on('fileuploaded', function (event,data) {   
-        var img = '#' + imgActive;
-        var imgInput = img + '-input'; 
-        $(img).attr('src','/img/slider/' + data.filenames[0]);
-        $(imgInput).attr('value','/img/slider/' + data.filenames[0]);
+    $('#file').on('fileuploaded', function (event, data) {
+        imgActive.find('img').attr('src', '/img/buttons/' + data.filenames[0]);
+        imgActive.next().attr('value', '/img/buttons/' + data.filenames[0]);
         $('#img-manager').modal('toggle');
+
     });
 
-    $('.img-button').click(function (){
-        imgActive = $(this).find('img').attr('id');
+    $(document).on('click', '.img-button', function () {
+        $('#img-manager').modal('toggle');
+        imgActive = $(this);
     });
+
     $(document).on('focus', '.select', function () {
         this.select();
     });

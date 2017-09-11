@@ -25,48 +25,39 @@ $menu = new Menu();
         </thead>
         <tbody id="table">
         <?php foreach ($menu->findMainMenu() as $avo): ?>
-            <tr class="danger">
+            <tr class="danger" data-id="<?= $avo->Pagina_DS_URL ?>">
                 <td data-label="titulo" data-type="text"><?= $avo->DS_Titulo ?></td>
                 <td data-label="titulo-pai" data-type="text"></td>
                 <td data-label="url" data-type="text"><?= $avo->Pagina_DS_URL ?></td>
                 <td data-label="action">
-                    <form method='post'>
-                        <input type='hidden' name='id' value='<?= $avo->Pagina_DS_URL ?>'>
                         <button type='button' class='btn btn-warning btn-xs edit'><span
                                 class='glyphicon glyphicon-edit'></span></button>
                         <button type='button' class='btn btn-danger btn-xs delete'><span
                                 class='glyphicon glyphicon-trash'></span></button>
-                    </form>
                 </td>
             </tr>
             <?php foreach ($menu->findChildMenu($avo->DS_Titulo) as $key => $pai): ?>
-                <tr class="info">
+                <tr class="info" data-id="<?= $pai->Pagina_DS_URL ?>">
                     <td data-label="titulo" data-type="text"><?= $pai->DS_Titulo ?></td>
                     <td data-label="titulo-pai" data-type="text"><?= $avo->DS_Titulo ?></td>
                     <td data-label="url" data-type="text"><?= $pai->Pagina_DS_URL ?></td>
                     <td data-label="action">
-                        <form method='post'>
-                            <input type='hidden' name='id' value='<?= $pai->Pagina_DS_URL ?>'>
                             <button type='button' class='btn btn-warning btn-xs edit'><span
                                     class='glyphicon glyphicon-edit'></span></button>
                             <button type='button' class='btn btn-danger btn-xs delete'>
                                 <span class='glyphicon glyphicon-trash'></span></button>
-                        </form>
                     </td>
                 </tr>
                 <?php foreach ($menu->findChildMenu($pai->DS_Titulo) as $filho): ?>
-                    <tr>
+                    <tr data-id="<?= $filho->Pagina_DS_URL ?>">
                         <td data-label="titulo" data-type="text"><?= $filho->DS_Titulo ?></td>
                         <td data-label="titulo-pai" data-type="text"><?= $pai->DS_Titulo ?></td>
                         <td data-label="url" data-type="text"><?= $filho->Pagina_DS_URL ?></td>
                         <td data-label="action">
-                            <form method='post'>
-                                <input type='hidden' name='id' value='<?= $filho->Pagina_DS_URL ?>'>
                                 <button type='button' class='btn btn-warning btn-xs edit'><span
                                         class='glyphicon glyphicon-edit'></span></button>
                                 <button type='button' class='btn btn-danger btn-xs delete'>
                                     <span class='glyphicon glyphicon-trash'></span></button>
-                            </form>
                         </td>
                     </tr>
                 <?php endforeach ?>
@@ -76,7 +67,7 @@ $menu = new Menu();
     </table>
     <button class="btn btn-primary form-control" id="add"><span class="glyphicon glyphicon-plus"></span> Adicionar
     </button>
-    <table id="template" style="display: none; visibility: hidden">
+    <table class="template" id="line">
         <tr>
             <td data-label="titulo" data-type="text">
                 <input type="text" class="form-control" name="titulo" placeholder="Título"></td>
@@ -91,28 +82,112 @@ $menu = new Menu();
             </td>
         </tr>
     </table>
-
+    <div class="template" id="btn-salvar">
+        <button class="btn btn-success btn-xs confirm" type="button"><span class="glyphicon glyphicon-check"></span> Salvar</button>
+    </div>
+    <div class="template" id="btn-editar">
+        <button type='button' class='btn btn-warning btn-xs edit'>
+            <span class='glyphicon glyphicon-edit'></span>
+        </button>
+        <button type='button' class='btn btn-danger btn-xs delete'>
+            <span class='glyphicon glyphicon-trash'></span>
+        </button>
+    </div>
     <script type="text/javascript">
 
         $('#add').click(function () {
-            $('#template').find('tr').clone().appendTo($('#table'));
+            var line = $('#line').find('tr').clone();
+            line.children().last().html($('#btn-salvar').html());
+            line.appendTo($('#table'));
         });
 
-        $('.edit').click(function () {
-            $(this).closest('tr').find('td').each(function () {
-                if ($(this).attr('data-label') != 'action') {
-                    $(this).html('<input type="' + $(this).attr('data-type') + '" class="form-control" value="' + $(this).html() + '">');
-                } else {
-                    $(this).html('<button class="btn btn-xs btn-success confirm" type="button"><span class="glyphicon glyphicon-check"></span> Salvar</button>');
+        $('#table').on('click','.confirm', function () {
+            var data = {};
+            var line = $(this).closest('tr');
+            line.find('input').each(function () {
+                data[$(this).attr('name')] = $(this).val();
+            });
+            if (line.attr('data-id') !== undefined && line.attr('data-id') !== null) {
+                data['id'] = line.attr('data-id');
+            }
+            console.log(data);
+            $.ajax({
+                url: "./controle/grv_menu.php",
+                type: 'post',
+                data: {data},
+                dataType: 'json',
+                success: function(result){
+                    console.log(result);
+                    fillTableLine(line,result);
+                    line.find('td').last().html($('#btn-editar').html());
+                    line.css('color','green');
+                    $.notify('Registro salvo com sucesso!','success');
+                },
+                error: function(xhr,status){
+                    inputParseText(line);
+                    line.find('td').last().html($('#btn-editar').html());
+                    line.css('color','red');
+                    $.notify('Falha ao tentar modificar o registro: ' + xhr.responseJSON.falha.errorInfo[2] + '','error');
+                    console.log(xhr);
+                    console.log(status);
                 }
             });
         });
 
+        function removeLine (line) {
+            var data = {};
+            if (line.attr('data-id') !== undefined && line.attr('data-id') !== null) {
+                data['id'] = line.attr('data-id');
+            }
+            $.ajax({
+                url: "./controle/rem_menu.php",
+                type: 'post',
+                data: { data },
+                dataType: 'json',
+                success: function(result){
+                    $.notify('Item removido com sucesso!','success');
+                },
+                error: function(xhr,status){
+                    line.css('color','red');
+                    $.notify('Falha ao tentar remover o registro: ' + xhr.responseJSON.falha.errorInfo[2] + '','error');
+                    console.log(xhr);
+                    console.log(status);
+                }
+            });
+            line.remove();
+        };
+
+
+        function inputParseText(line) {
+            line.find('td').each(function (i) {
+                $(this).html($(this).find('input').val());
+            });
+        }
+        function fillTableLine(line,result) {
+            line.attr('data-id',result.url);
+            line.find('td').eq(0).html(result.titulo);
+            line.find('td').eq(1).html(result.pai);
+            line.find('td').eq(2).html(result.url);
+        }
+        function textParseInput(line) {
+            var templateInput = $('#line').find('input').clone();
+            line.find('td').each(function (i) {
+                templateInput.eq(i).val($(this).html());
+                $(this).html(templateInput.eq(i));
+            });
+        }
+
+        $('#table').on('click','.edit',function () {
+            var line = $(this).closest('tr');
+            textParseInput(line);
+            line.find('td').last().html($('#btn-salvar').html());
+        });
+
         $(document).on("click", ".delete", function (e) {
-            const form = $(this).parent();
+            var line = $(this).closest('tr');
             bootbox.confirm("Tem certeza que deseja excluir este item?", function (confirm) {
                 if (confirm) {
-                    form.submit();
+                    removeLine(line);
                 }
             });
         });
