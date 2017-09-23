@@ -21,6 +21,10 @@
     <script src="js/notify.js"></script>
     <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.css" rel="stylesheet">
     <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.js"></script>
+    <link href="css/bootstrap-select.css" rel="stylesheet">
+    <link href="css/loading.css" rel="stylesheet">
+    <link href="css/loading-btn.css" rel="stylesheet">
+    <script src="js/bootstrap-select.js"></script>
     <script type="text/javascript">
         function passarDados(){
             nrId = document.getElementById('nid').value;

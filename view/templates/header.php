@@ -179,11 +179,11 @@
                                         <span class="caret"></span>
                                     </a>
                                     <ul class="dropdown-menu" aria-labelledby="drop1">
-                                        <?php foreach ($menu->findChildMenu($avo->DS_Titulo) as $key => $pai): ?>
+                                        <?php foreach ($menu->findChildMenu($avo->ID_Menu) as $key => $pai): ?>
                                             <div class="sub-menu-grupo <?= $color[$key] ?>">
                                                 <h4><?= $pai->DS_Titulo ?></h4>
                                                 <ul>
-                                                    <?php foreach ($menu->findChildMenu($pai->DS_Titulo) as $filho): ?>
+                                                    <?php foreach ($menu->findChildMenu($pai->ID_Menu) as $filho): ?>
                                                         <li><a href="/pagina/<?= $filho->Pagina_DS_URL ?>"><?= $filho->DS_Titulo ?></a>
                                                         </li>
                                                     <?php endforeach ?>
