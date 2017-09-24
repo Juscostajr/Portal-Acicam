@@ -14,16 +14,20 @@ $pagger = new Pagger('./?pg=calendario&aba=editar');
 //$midia = new PaginaModel();
 $patch = '../assets/midia/';
 $files = array_diff(scandir($patch), array('.', '..'));
+include_once 'controle/grv_midia.php';
 ?>
+
 <div class="row">
+    <form method="post" enctype="multipart/form-data" name="form">
     <div class="col-md-10">
-        <div class='form-group'><input id='file' type='file' name='foto' class='file' data-show-preview='true'></div>
+        <div class='form-group'><input id='file' type='file' name='file' class='file' data-show-preview='true'></div>
     </div>
     <div class="col-md-2">
-        <button type="button" class="btn btn-warning btn-block"><span class="glyphicon glyphicon-upload"></span>
+        <button type="button" class="btn btn-warning btn-block" onclick="form.submit()"><span class="glyphicon glyphicon-upload"></span>
             Carregar
         </button>
     </div>
+    </form>
 </div>
 <div class="table-responsive">
     <table class="table table-striped">
@@ -101,6 +105,6 @@ $files = array_diff(scandir($patch), array('.', '..'));
     $("#file").fileinput({
         language: "pt-BR",
         showUpload: false,
-        allowedFileExtensions: ["jpg", "png", "gif"]
+        allowedFileExtensions: ["jpg", "png", "gif", "doc", "docx" , "ppt" , "pptx" , "pdf" , "xls", "xlsx"]
     });
 </script>
