@@ -12,7 +12,6 @@ require_once "ConfigMysql.php";
 class DB
 {
     private static $instance;
-
     public static function getInstance(){
 
         if(!isset(self::$instance)){
