@@ -6,11 +6,12 @@
  * Time: 08:36
  */
 if(isset($_POST["file"])){
-    require_once "../app/frameworks/mensagens.php";
-    $file = $_POST["file"];
+    $file = '../..' . $_POST["file"];
     if(unlink($file)){
-        echo alert(GREEN,"Arquivo removido com <b>Sucesso!</b>");
+        echo json_encode(['feedback' => 'success']);
+        http_response_code(200);
     } else{
-        echo alert(RED,"<b>Falha</b> ao tentar remover arquivo!");
+        echo json_encode(['feedback' => 'fail']);
+        http_response_code(500);
     }
 }

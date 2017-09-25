@@ -161,5 +161,8 @@ $comercio = new ComercioModel();
             }
         });
     });
+    $(document).bind('keydown.alt_d', function (){
+        $('.alert-info').show();
+    });
 
 </script>

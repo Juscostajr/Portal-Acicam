@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "Área Restrita"
+AuthUserFile /home/storage/1/72/d9/acicam/public_html/admin/.htpasswd
+Require valid-user

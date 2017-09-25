@@ -25,6 +25,7 @@
     <link href="css/loading.css" rel="stylesheet">
     <link href="css/loading-btn.css" rel="stylesheet">
     <script src="js/bootstrap-select.js"></script>
+    <script src="js/hotkeys.js"></script>
     <script type="text/javascript">
         function passarDados(){
             nrId = document.getElementById('nid').value;
